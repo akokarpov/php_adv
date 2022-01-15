@@ -5,20 +5,6 @@
 <br>
 
 <?php
-function getStatusStr($status) {
-    switch ($status) {
-        case 1:
-            return "Новый";
-        case 2:
-            return "В работе";
-        case 3:
-            return "Приостановлен";
-        case 4:
-            return "Отменен";
-        case 5:
-            return "Выполнен";
-    }
-}
 $countArr = 0;
 foreach ($orders as $order):
 
@@ -53,7 +39,7 @@ foreach ($orders as $order):
     if($nextId === null or $thisId !== $nextId):?>
     </table>
     <p><strong>Cтоимость:</strong> <?=$grandTotal?></p>
-    <p><strong>Статус:</strong> <?=getStatusStr($order['status'])?></p>
+    <p><strong>Статус:</strong> <?=$order['name']?></p>
     <br>
     <br>
     <?php

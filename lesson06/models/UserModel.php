@@ -11,6 +11,7 @@ class UserModel {
         join orders on cart.id = cartId and status > 0
         join goods on cart.goodId = goods.id
         join users on cart.userId = users.id
+        join status on cart.status = status.id
         where users.id = {$_SESSION['userId']}
         order by orders.datetime";
         $answer = mysqli_query($connect, $query);
