@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>photo gallery PHP with MySLQ</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<a href="#">Главная</a>
+&nbsp;
+
+<h1>My gallery</h1>
+
+<div class="container">
+  {% for image in images %}
+        <div class="image_container">
+          <a href="full_image.php?file={{ image.filename }}&path={{ image.path_fullscale }}">
+          <img width="100" src="{{ image.path_thumbnails }}{{ image.filename }}" alt="">
+          </a>
+          <a href="server.php?action=delete&id={{ image.id }}"><button class="del_button">🗑️</button></a>
+        </div>
+  {% endfor %}
+</div>
+
+<h1>Upload a new photo</h1>
+<form action="server.php?action=add" method="post" enctype="multipart/form-data">
+    <input type="file" accept='image/*' name='photo'><br><br>
+    <input type="submit" value='Upload'>
+</form>
+
+</body>
+</html>
